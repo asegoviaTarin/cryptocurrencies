@@ -4,7 +4,7 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
+    this.state = {
       term: '',
       placeHolder: 'Search...',
     };
@@ -23,12 +23,18 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
-        <input value= {this.state.term}
-        placeholder = {this.state.placeHolder}
-        onChange={event => this.onInputChanges(event.target.value)}
-         />
-      </div>
+      <nav className="navbar navbar-dark bg-dark">
+          <a className="navbar-brand abs" href="http://finametrix.com">Finametrix</a>
+
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <input className="form-control ml-auto" value= {this.state.term}
+            placeholder = {this.state.placeHolder}
+            onChange={event => this.onInputChanges(event.target.value)}
+            />
+          </li>
+        </ul>
+      </nav>
     ) 
   }
 }
