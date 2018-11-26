@@ -24,6 +24,6 @@ export function getSerie(symbol, market = 'EUR') {
   .then(response => response.json())
   .then(data => {
     return sanitizeData(data)
-  })
+  }).catch(e => Promise.reject(e))
 }
 

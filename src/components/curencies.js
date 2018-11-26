@@ -1,7 +1,6 @@
 import React from 'react';
 
 const CurrencyList = (props) => {
-
   const currencyItems = props.currencies.map((currency, index) => {
     return (
       <div className="card" key={index}>

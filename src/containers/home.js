@@ -18,12 +18,9 @@ class App extends React.Component {
 
   componentDidMount() {
     const promises = [];
+    
     // promises.push(getSerie('BIT'));
-    // promises.push(getSerie('BIT'));
-    // promises.push(getSerie('BIT'));
-    // promises.push(getSerie('BIT'));
-    // promises.push(getSerie('BIT'));
-    // promises.push(getSerie('BIT'));
+
     promises.push(getSerie('BTC'));
     promises.push(getSerie('ETH')); //ETH
     promises.push(getSerie('XRP')); //XRP
@@ -34,6 +31,9 @@ class App extends React.Component {
         currencies: this.state.currencies.concat(serie),
         defaultCurrencies: this.state.currencies.concat(serie),
       })
+    })
+    .catch(e => {
+      this.setState({error : e})
     });
   }
 
@@ -60,8 +60,19 @@ class App extends React.Component {
   }
 
   render() {
-    if (!this.state.currencies) {
-      return (<label>Loading...</label>);
+    if (this.state.error) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          Something was wrong, check API response...
+        </div>
+      );
+    }
+    if (!this.state.currencies || this.state.currencies.length < 3) {
+      return(
+        <div className="alert alert-info" role="alert">
+          Loading...
+        </div>
+      );
     }
     return (
       <div className="container">
