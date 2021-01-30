@@ -40,12 +40,12 @@ class App extends React.Component {
   search(key) {
     this.setState({searchKey: key})
     const searchCharTrigger = 3;
-    if (key.searchKey && key.searchKey.length >= searchCharTrigger) {
+    const value = key.searchKey && key.searchKey.toLowerCase();
+    if (value && value.length >= searchCharTrigger) {
       const currencies = this.state.defaultCurrencies.filter(currency => {
         const currencyName = currency['3. Digital Currency Name'].toLowerCase();
         if (!currencyName) return false;
-
-        return currencyName.includes(key.searchKey);
+        return currencyName.includes(value);
       });
 
       this.setState({
@@ -53,6 +53,7 @@ class App extends React.Component {
       });
 
     } else {
+      console.log(this.state.defaultCurrencies)
       this.setState({
         currencies: this.state.defaultCurrencies
       });
@@ -67,7 +68,7 @@ class App extends React.Component {
         </div>
       );
     }
-    if (!this.state.currencies || this.state.currencies.length < 3) {
+    if (!this.state.currencies) {
       return(
         <div className="alert alert-info" role="alert">
           Loading...
