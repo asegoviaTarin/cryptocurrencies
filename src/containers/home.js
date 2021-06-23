@@ -4,7 +4,6 @@ import CurencyList from '../components/curencies';
 import { getSerie } from '../services/api-alphavantage'
 import 'bootstrap/dist/css/bootstrap.css';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -18,12 +17,10 @@ class App extends React.Component {
 
   componentDidMount() {
     const promises = [];
-    
-    // promises.push(getSerie('BIT'));
 
     promises.push(getSerie('BTC'));
-    promises.push(getSerie('ETH')); //ETH
-    promises.push(getSerie('XRP')); //XRP
+    promises.push(getSerie('ETH'));
+    promises.push(getSerie('XRP'));
 
     Promise.all(promises)
     .then(serie => {

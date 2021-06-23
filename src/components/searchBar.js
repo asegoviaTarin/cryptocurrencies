@@ -24,8 +24,6 @@ class SearchBar extends React.Component {
   render() {
     return (
       <nav className="navbar navbar-dark bg-dark">
-          <a className="navbar-brand abs" href="http://finametrix.com">Finametrix</a>
-
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
             <input className="form-control ml-auto" value= {this.state.term}
@@ -35,7 +33,7 @@ class SearchBar extends React.Component {
           </li>
         </ul>
       </nav>
-    ) 
+    )
   }
 }
 
